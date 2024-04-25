@@ -1,5 +1,7 @@
 # Mobile Ollama Llama3-8B RAG with a "Live" Avatar from D-ID 
 
+https://youtu.be/X6A4lqfE8mg
+
 I plan to create a step-by-step video series on how to set this up and run it on YouTube
 https://www.youtube.com/@AI_by_AI_007/videos In the meantime, here are the steps:
 
@@ -55,7 +57,10 @@ https://www.youtube.com/@AI_by_AI_007/videos In the meantime, here are the steps
 * Be patient and enjoy the puzzle if things are not working right away -- stay with it you will get it!
 
 
-For help See the Youtube:  
+For help See the Youtube:  https://youtu.be/X6A4lqfE8mg
+
+
+![image](https://github.com/jjmlovesgit/Mobile-Ollama-Llama3-Rag-with-Live-Agent-Example/assets/47751509/eadcab71-fe62-4ed2-bb77-94e65b777e78)
 
 
 Helpfull Flowchart:
