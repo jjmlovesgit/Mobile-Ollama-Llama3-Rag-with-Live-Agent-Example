@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" type="image/gif">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+      
+  <body>
+    <nav id="desktop-nav">
+      <div class="logo2">
+        <img src="assets/logo_icon.png" alt="Logo Icon">
+      </div>
+      <div class="section__text__p1"></div>
+      <div class="logo">
+        Gino's Fine Italian
+        <br>
+      </div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Community</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Gino's Pizza, Inc.</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about" onclick="toggleMenu()">About</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Community</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+   
+    <section id="Iframe">
+      <div class="iframe-container" id="iframeContainer" style="display: none;">
+        <iframe src="../agent.html" style="border:0;" name="myiFrame" scrolling="No" frameborder="0" marginheight="0px" marginwidth="0px" height="800px" width="600px" allowfullscreen></iframe>
+      </div>
+      <section id="profile">    
+        <div class="section__text">
+          <div class="btn-container">
+            <button class="btn btn-color-2" onclick="toggleIframe()">Assistant</button>
+          </div>
+          <div class="blank-line"></div>  
+          <p class="section__text__p1">Welcome!</p>
+          <h1 class="title">Let's Eat!</h1>
+          <p class="section__text__p2">Gino's Pizza and Italian</p>
+          <div class="section__pic-container2">
+            <img
+              src="./assets/gino.jpg"
+              alt="Profile picture"
+              class="about-pic"
+            />
+          </div>
+          <div class="text-container">
+            <div class="blank-line"></div>  
+            <p>
+              "Please try our assistant for online ordering.  We thank you for your business and look forward to serving you!"
+            </p>
+            <div class="blank-line"></div>  
+          </div>
+          <p class="section__text__p2">Pizza | Pasta | Salads</p>
+          <div id="socials-container">
+            <img src="./assets/SMlogos.png" alt="Social profile" class="icon"/>
+          </div>
+          <div class="blank-line"></div> 
+            <a href="./assets/menu.png" target="_blank" class="pdf-button">Open Our Menu</a>
+          </div>   
+    </section>
+    
+    <section id="about">
+      <div class="section__text">
+        <div class="blank-line"></div> 
+        <div class="blank-line"></div> 
+        <p class="section__text__p1">-----------</p>
+        <h1 class="title">About Our Story</h1>
+      <div class="section-container">
+        <div class="section__pic-container_2">
+          <img
+            src="./assets/pizzapic.png"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>Founded <br />Circa 1981</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experice icon"
+                class="icon"
+              />
+              <h3>Awards</h3>
+              <p>Best Eats <br />2021, 2022, 2023</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>
+              "In the 1960’s, when our founder, Gino Aioni, immigrated to America from Palermo, Sicily, he brought with him a special gift which was to shape the lives of his family for generations to come. His gift was a passion. Gino loved to cook, and when Gino cooked people came from far and wide to eat. There was never an empty seat at Gino’s table. In 1975, after raising two fine sons, Gino fulfilled his lifelong dream and opened the doors of the very first Gino’s Pizza Restaurant in Corona Del Mar California. The rest, as they say, is history in  the baking!"
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+
+    <section id="projects">
+      <p class="section__text__p1">-----------</p>
+      <p class="section__text__p1">     </p>
+      <h1 class="title">Community Involvement</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Alpha House</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'" 
+              >
+              More Info
+              </button>
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'"
+              >
+              Contact Us
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Access Project</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'"
+              >
+              More Info
+              </button>
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'"
+              >
+              Contact Us
+              </button>
+            </div>
+          </div>
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Health Matters</h2>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'"
+              >
+                More Info
+              </button>
+              <button
+                class="btn btn-color-1 project-btn"
+                onclick="location.href='https://'"
+              >
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#contact'"
+      />
+    </section>
+    <section id="contact">
+      <p class="section__text__p1">Get in Touch</p>
+      <h1 class="title">Contact Gino's</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p><a href="mailto:wharris@gmail.com">Ginos@gmail.com</a></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Community</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p>Copyright &#169; 2024 All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

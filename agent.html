@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>D-ID Streaming POC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet" />
+    <!-- Link to our external CSS file -->
+    <link rel="stylesheet" href="agentstyles.css" />
+</head>
+
+<body>
+<audio id="click-sound" src="clic.mp3" preload="auto"></audio>
+<div id="content">
+    <div id="video-wrapper">
+        <div class="video-container">
+            <video id="talk-video" autoplay></video>
+        </div>
+    </div>
+    <br/>
+
+    <div id="input-container" style="text-align: left;">
+        <textarea id="user-input-field" placeholder="I can answer questions about the menu and take your order..."></textarea>
+        <div style="height: 1em;"></div>
+        <div style="display: flex; justify-content: center;">
+            <input type="checkbox" id="toggleDID">
+            <label for="toggleDID" style="color: rgb(0, 0, 0); font-size: 12px;">"Avatar" Chat</label>
+            <input type="checkbox" id="toggleShortAnswer" checked> 
+            <label for="toggleShortAnswer" style="color: rgb(0, 0, 0); font-size: 12px;">Short Answers</label>  
+            <input type="checkbox" id="toggleReadAloud" checked>
+            <label for="toggleReadAloud" style="color: rgb(0, 0, 0); font-size: 12px;">Text Chat</label> 
+        </div>
+    </div>
+    <div style="height: 1em;"></div>
+</div>
+
+<div id="buttons"> 
+    <button id="voice-typing-button" type="button">Voice Type</button>
+    <button id="talk-button" type="button">Send</button> 
+    <!-- <button id="replay-button" type="button">Replay</button>   -->
+    <button id="connect-button" type="button">Reconnect</button>
+</div>
+
+<textarea id="response-container" rows="4"></textarea>
+
+<!-- For Troubleshooting  For Troubleshooting -->
+<div id="status"> 
+    ICE gathering status: <span id="ice-gathering-status-label"></span><br/>
+    ICE status: <span id="ice-status-label"></span><br/>
+    Peer connection status: <span id="peer-status-label"></span><br/>
+    Signaling status: <span id="signaling-status-label"></span><br/>
+    Streaming status: <span id="streaming-status-label"></span><br/> 
+</div>
+
+
+<script>
+  document.getElementById('user-input-field').addEventListener('input', function () {
+      this.style.height = 'auto';
+      this.style.height = (this.scrollHeight) + 'px';
+  });
+
+  // Function to clear the input field when clicked
+  document.getElementById('user-input-field').addEventListener('click', function () {
+      this.value = ''; // Clear the input field
+      this.style.height = 'auto'; // Reset the height
+  });
+
+  // Function to convert URLs in text to clickable links
+  function linkify(text) {
+      const urlRegex = /(https?:\/\/[^\s]+)/g;
+      return text.replace(urlRegex, function (url) {
+          return `<a href="${url}" target="_blank">${url}</a>`; // This opens links in a new tab
+      });
+  }
+
+
+if ('webkitSpeechRecognition' in window) {
+    var recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    var isListening = false;
+    var speechTimeout = null;
+
+    document.getElementById('voice-typing-button').addEventListener('click', function() {
+        toggleRecognition();
+    });
+
+    function toggleRecognition() {
+        if (isListening) {
+            recognition.stop();  // Stop the recognition
+            isListening = false;
+            document.getElementById('voice-typing-button').textContent = 'Voice Type';
+        } else {
+            recognition.start();  // Start the recognition
+            isListening = true;
+            document.getElementById('voice-typing-button').textContent = 'Stop Typing';
+        }
+    }
+
+    recognition.onresult = function (event) {
+        var transcript = '';
+        for (var i = event.resultIndex; i < event.results.length; ++i) {
+            transcript += event.results[i][0].transcript;
+        }
+        if (transcript.trim() !== '') {
+            document.getElementById('user-input-field').value = transcript;
+        }
+
+        // Reset the timeout on new non-empty speech detected
+        if (transcript.trim() !== '') {
+            clearTimeout(speechTimeout);
+            speechTimeout = setTimeout(() => {
+                if (isListening && transcript.trim() !== '') {
+                    recognition.stop();
+                    processFinalInput(transcript);  // Process the final non-empty input after timeout
+                    isListening = false;
+                    document.getElementById('voice-typing-button').textContent = 'Voice Type';
+                }
+            }, 900);
+        }
+    };
+
+    recognition.onend = function() {
+        isListening = false;
+        document.getElementById('voice-typing-button').textContent = 'Voice Type';
+    };
+
+    function processFinalInput(finalInput) {
+        // Placeholder for processing logic
+        console.log("Processing:", finalInput);
+        // Simulate a "Chat" button press or directly call processing functions
+        document.getElementById('talk-button').click();  // Assume this button triggers processing
+    }
+} else {
+    alert("Web Speech API is not supported in this browser.");
+}
+
+    // Event listener to cancel speech synthesis if the "Escape" key is pressed
+    document.addEventListener('keydown', (event) => {
+        if (event.key === "Escape") {
+            window.speechSynthesis.cancel();
+            console.log("Speech synthesis cancelled."); // Optional: for debugging
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const toggleDID = document.getElementById('toggleDID');
+    const toggleReadAloud = document.getElementById('toggleReadAloud');
+
+    if (toggleDID && toggleReadAloud) {
+        // When the D-ID toggle changes
+        toggleDID.addEventListener('change', function () {
+            if (this.checked) {
+                // If D-ID is checked, Read Aloud is unchecked
+                toggleReadAloud.checked = false;
+            } else {
+                // If D-ID is unchecked, Read Aloud is automatically checked
+                toggleReadAloud.checked = true;
+            }
+        });
+
+        // When the Read Aloud toggle changes
+        toggleReadAloud.addEventListener('change', function () {
+            if (this.checked) {
+                // If Read Aloud is checked, D-ID is unchecked
+                toggleDID.checked = false;
+            } else {
+                // If Read Aloud is unchecked, D-ID is automatically checked
+                toggleDID.checked = true;
+            }
+        });
+    } else {
+        console.error('Required elements are missing from the DOM');
+    }
+});
+
+
+    window.addEventListener('load', function() {
+    fetch('/reset-conversation', { method: 'POST' })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Server responded with a non-200 status');
+            }
+        })
+        .then(data => {
+            console.log('Reset successful:', data);
+        })
+        .catch(error => {
+            console.error('Error resetting conversation buffer:', error);
+        });
+
+    const connectButton = document.getElementById('connect-button');
+    connectButton.click();
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get the audio element
+        var clickSound = document.getElementById('click-sound');
+
+        // Function to play the sound
+        function playClickSound() {
+            clickSound.play();
+        }
+
+        // Add event listeners to your buttons
+        document.getElementById('voice-typing-button').addEventListener('click', playClickSound);
+        document.getElementById('talk-button').addEventListener('click', playClickSound);
+        document.getElementById('connect-button').addEventListener('click', playClickSound);
+    });
+
+</script>
+<script type="module" src="/streaming-client-api.js"></script>
+<script type="module" src="/langindex.js"></script>
+</body>
+</html>
