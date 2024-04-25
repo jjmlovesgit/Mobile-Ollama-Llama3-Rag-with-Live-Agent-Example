@@ -13,7 +13,7 @@ const app = express();
 
 // Configure CORS for Tailscale (Remote access to the app without loadiong LLM etc.)
 app.use(cors({
-  origin: 'https://desktop.tail772ae.ts.net',
+  origin: 'https://desktop.yourtail.ts.net',
   credentials: true,
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization']
