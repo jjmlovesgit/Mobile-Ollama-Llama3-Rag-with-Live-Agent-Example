@@ -57,10 +57,10 @@ https://www.youtube.com/@AI_by_AI_007/videos In the meantime, here are the steps
 * Be patient and enjoy the puzzle if things are not working right away -- stay with it you will get it!
 
 
-For help See the Youtube:  https://youtu.be/X6A4lqfE8mg
+For help See the Youtube:  [https://youtu.be/X6A4lqfE8mg](https://youtu.be/6Qa2qdlN2pU)
 
+![image](https://github.com/jjmlovesgit/Mobile-Ollama-Llama3-Rag-with-Live-Agent-Example/assets/47751509/4acfdfda-6d25-4c03-836b-4fcae49b049e)
 
-![image](https://github.com/jjmlovesgit/Mobile-Ollama-Llama3-Rag-with-Live-Agent-Example/assets/47751509/eadcab71-fe62-4ed2-bb77-94e65b777e78)
 
 
 Helpfull Flowchart:
