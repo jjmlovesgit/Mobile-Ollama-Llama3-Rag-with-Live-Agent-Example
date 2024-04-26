@@ -58,7 +58,7 @@ https://www.youtube.com/@AI_by_AI_007/videos In the meantime, here are the steps
 
 
 For help See the Youtube:  (https://youtu.be/6Qa2qdlN2pU)
-![thumb](https://github.com/jjmlovesgit/Mobile-Ollama-Llama3-Rag-with-Live-Agent-Example/assets/47751509/f15c450b-0bbc-4f1b-a9f0-09c7acf530d9)
+
 
 
 
